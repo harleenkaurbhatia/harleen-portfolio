@@ -89,6 +89,22 @@ export default function Hero() {
             </svg>
             More Info
           </a>
+          <a
+            href="/Harleen_Kaur_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2.5 rounded-md border border-white/15 bg-white/10 px-6 py-3.5 text-[15px] font-bold backdrop-blur-sm"
+          >
+            Resume
+          </a>
+          <a
+            href="https://www.linkedin.com/in/harleenkauriitb/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2.5 rounded-md border border-white/15 bg-white/10 px-6 py-3.5 text-[15px] font-bold backdrop-blur-sm"
+          >
+            LinkedIn
+          </a>
         </div>
       </div>
 
