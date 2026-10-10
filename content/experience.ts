@@ -137,4 +137,47 @@ export const experience: ShowEntry[] = [
       },
     ],
   },
+  {
+    slug: "modul-cofounder",
+    category: "experience",
+    title: "Modul",
+    subtitle: "Co-founder, Marketing & Operations",
+    years: "2024",
+    tags: ["Pilot", "Home Automation", "Customer Discovery"],
+    color: "oklch(0.38 0.06 280)",
+    synopsis:
+      "A home that looks after the people in it. A home automation startup I co-founded at IIT Bombay under the IDEAS program: one unit that works with every brand in the house and notices when someone living alone needs help.",
+    episodes: [
+      {
+        title: "Why We Started",
+        summary: "A home that notices when someone living alone needs help.",
+        readTime: "2 min",
+        body: "The idea came from older people who live alone. If someone falls, forgets the stove, or needs help at night, there is often nobody around to notice. In my second year at IIT Bombay, a friend and I started Modul under the IDEAS program to build a home that could notice for them.\n\nThe plan was a central unit that connects to every device in the house, whatever the brand, and learns the household\u2019s routine. It would detect a fall and alert family, call for help in an emergency, and take over daily chores like cooking and cleaning as more devices were added. Assistants like Alexa wait for a command. We wanted one that acts before you ask.\n\nWe spoke to 50+ households before building much. The biggest concern we heard was privacy: people did not want a device watching their routines and sending that data to a company. We never shipped. If I built it again, everything would run on the unit inside the home, with nothing sent to the cloud.\n\nModul was my first attempt at a company, and it is where I learned to talk to users before writing code.",
+      },
+      {
+        title: "The Product",
+        summary: "A hub, device drivers, one app, an AI layer and safety monitoring.",
+        readTime: "2 min",
+        body: "Modul had five parts.\n\nThe hub: the brain of the home, connecting every device over one secure network. We chose Zigbee as the main protocol because it is low power, cheap, and lets devices pass signals to each other across the house.\nDevice drivers: software that translated signals from any brand over Zigbee, Z-Wave, Bluetooth and Wi-Fi.\nOne app: lighting, temperature, appliances and security in a single place.\nAn AI layer: it learned the household's routine and adjusted the home without being asked.\nSafety monitoring: fall detection, signs of declining health, and automatic calls or alerts to family.\n\nIt was modular. A family could start with one room and add devices over time. Assistants like Alexa wait for a command, and we wanted one that acts before you ask.",
+      },
+      {
+        title: "What It Looked Like",
+        summary: "A black metal cube with a face, and glass sensor patches.",
+        readTime: "1 min",
+        body: "The hub was a 10 cm black metal cube. The front was an LED screen with two oval eyes and a small smile. The power button was the \u201co\u201d in \u201cmodul\u201d, and the name glowed white when it was on. Alongside it were sensor patches: 11 cm glass discs with the circuitry visible inside, a suction cup on the back, and a soft light that showed when a sensor was active.",
+      },
+      {
+        title: "Talking to Users",
+        summary: "40 surveys, household interviews, and four hypotheses with pass marks.",
+        readTime: "2 min",
+        body: "I ran marketing and operations, which at that stage meant customer discovery. We surveyed 40 people across three groups: working singles, working parents and senior citizens. Then we did longer household interviews.\n\nWe wrote down four hypotheses with a pass mark for each before we started. For example, at least 60% had to want multi-brand integration, and at least 50% had to prefer a modular model over a one-time purchase.\n\nWhat we heard:\nCooking, cleaning and laundry were what people most wanted automated.\nMost homes had devices from several brands, and brand loyalty was low. Price, reviews and friends decided what they bought.\nOlder and lower-income respondents either had not heard of home automation or thought it was too expensive.\nHouseholds were uneasy about a device that watched their routines.\nLower-income households preferred the modular model. Wealthier ones wanted a complete system upfront.",
+      },
+      {
+        title: "Two Pivots",
+        summary: "A new target customer, and selling through contractors and showrooms.",
+        readTime: "2 min",
+        body: "The first was the customer. Young professionals were excited, and senior citizens were reluctant to change how they lived. The people I most wanted to help were the least willing to use it. We moved our target to working professionals aged 20 to 50, some of whom would buy it for their parents.\n\nThe second was the business model. After speaking to industry experts, we realised selling through contractors, interior designers and electronics showrooms could work better than selling to households one at a time. We planned two offers: device add-ons for middle-income homes, and full end-to-end integration for affluent ones.",
+      },
+    ],
+  },
 ];

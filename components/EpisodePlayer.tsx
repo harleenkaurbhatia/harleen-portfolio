@@ -93,7 +93,7 @@ export default function EpisodePlayer({ episode, index, total, color, showTitle,
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, ease: "easeOut", delay: 0.3 }}
-                className="text-[17px] leading-relaxed text-text-muted"
+                className="whitespace-pre-line text-[17px] leading-relaxed text-text-muted"
               >
                 {episode.body}
               </motion.p>
