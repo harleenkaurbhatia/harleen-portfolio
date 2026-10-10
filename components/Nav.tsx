@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 
@@ -15,6 +16,19 @@ export default function Nav() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const activeSeason = searchParams.get("season");
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  // close the mobile menu on route change, and never leave the page unscrollable behind it
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname, activeSeason]);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
 
   function isActive(link: (typeof LINKS)[number]) {
     if (link.label === "Home") return pathname === "/";
@@ -23,7 +37,7 @@ export default function Nav() {
   }
 
   return (
-    <header className="sticky top-0 z-40 flex items-center justify-between gap-10 bg-gradient-to-b from-bg via-bg/90 to-transparent px-8 py-5 backdrop-blur-sm md:px-14">
+    <header className="sticky top-0 z-40 flex items-center justify-between gap-10 bg-gradient-to-b from-bg via-bg/90 to-transparent px-5 py-5 backdrop-blur-sm sm:px-8 md:px-14">
       <div className="flex items-center gap-10">
         <Link
           href="/"
@@ -47,7 +61,7 @@ export default function Nav() {
         </nav>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3 sm:gap-4">
         <a
           href="/Harleen_Kaur_Resume.pdf"
           target="_blank"
@@ -69,7 +83,7 @@ export default function Nav() {
         </a>
         <button
           aria-label="Search"
-          className="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted hover:text-text"
+          className="hidden h-8 w-8 items-center justify-center rounded-lg text-text-muted hover:text-text sm:flex"
         >
           <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6">
             <circle cx="9" cy="9" r="6" />
@@ -78,7 +92,7 @@ export default function Nav() {
         </button>
         <button
           aria-label="Notifications"
-          className="relative flex h-8 w-8 items-center justify-center rounded-lg text-text-muted hover:text-text"
+          className="relative hidden h-8 w-8 items-center justify-center rounded-lg text-text-muted hover:text-text sm:flex"
         >
           <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
             <path d="M5 15v-4a5 5 0 0 1 10 0v4l1.5 2h-13L5 15z" />
@@ -86,10 +100,57 @@ export default function Nav() {
           </svg>
           <span className="absolute right-1 top-1 h-1.5 w-1.5 rounded-full bg-accent ring-2 ring-bg" />
         </button>
-        <div className="flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-[oklch(0.5_0.1_40)] to-[oklch(0.32_0.08_30)] text-[11px] font-bold">
+        <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-[oklch(0.5_0.1_40)] to-[oklch(0.32_0.08_30)] text-[11px] font-bold">
           HK
         </div>
+        <button
+          onClick={() => setMobileOpen((o) => !o)}
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
+          className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-text-muted hover:text-text md:hidden"
+        >
+          <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
+            {mobileOpen ? (
+              <>
+                <line x1="5" y1="5" x2="15" y2="15" />
+                <line x1="15" y1="5" x2="5" y2="15" />
+              </>
+            ) : (
+              <>
+                <line x1="3" y1="6" x2="17" y2="6" />
+                <line x1="3" y1="10" x2="17" y2="10" />
+                <line x1="3" y1="14" x2="17" y2="14" />
+              </>
+            )}
+          </svg>
+        </button>
       </div>
+
+      {mobileOpen && (
+        <div className="absolute inset-x-0 top-full z-40 border-t border-white/10 bg-bg px-5 py-4 shadow-2xl md:hidden">
+          <nav className="flex flex-col gap-1">
+            {LINKS.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className={`rounded-lg px-4 py-3 text-base font-semibold ${
+                  isActive(link) ? "bg-white/10 text-text" : "text-text-muted"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <a
+              href="/Harleen_Kaur_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg px-4 py-3 text-base font-semibold text-text-muted"
+            >
+              Resume
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

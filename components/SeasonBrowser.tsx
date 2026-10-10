@@ -17,7 +17,7 @@ export default function SeasonBrowser({
 }) {
   const router = useRouter();
   const [season, setSeason] = useState<SeasonKey>(initialSeason);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   function pick(key: SeasonKey) {
     setSeason(key);
@@ -35,10 +35,10 @@ export default function SeasonBrowser({
   return (
     <div className="relative">
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-2xl font-bold md:text-[25px]">Episodes</h2>
+        <h2 className="text-xl font-bold sm:text-2xl md:text-[25px]">Episodes</h2>
         <button
           onClick={() => setOpen((o) => !o)}
-          className="flex items-center gap-2.5 rounded border-[1.5px] border-text px-4.5 py-2.5 text-sm font-bold"
+          className="flex flex-shrink-0 items-center gap-2 rounded border-[1.5px] border-text px-3 py-2 text-[13px] font-bold sm:gap-2.5 sm:px-4.5 sm:py-2.5 sm:text-sm"
         >
           {label}
           <svg
@@ -67,31 +67,32 @@ export default function SeasonBrowser({
           <Link
             key={show.slug}
             href={`/show/${show.slug}`}
-            className={`flex items-center gap-5 px-3.5 py-4.5 ${
+            className={`flex items-center gap-3 px-2.5 py-3.5 sm:gap-5 sm:px-3.5 sm:py-4.5 ${
               i === 0 ? "rounded-lg bg-bg-raised" : "border-t border-white/8"
             }`}
           >
-            <span className="font-display w-7 flex-shrink-0 text-center text-2xl font-bold text-text-faint">
+            <span className="font-display hidden w-7 flex-shrink-0 text-center text-2xl font-bold text-text-faint sm:block">
               {i + 1}
             </span>
             <span
-              className="card-art-texture relative h-[86px] w-[148px] flex-shrink-0 overflow-hidden rounded-md"
+              className="card-art-texture relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-md sm:h-[86px] sm:w-[148px]"
               style={{ background: `linear-gradient(150deg, ${show.color}, oklch(0.18 0.05 40))` }}
             />
             <span className="min-w-0 flex-1">
-              <span className="mb-1 block text-base font-bold">
+              <span className="mb-1 block text-[14.5px] font-bold leading-snug sm:text-base">
                 {show.title}
                 {show.subtitle ? ` — ${show.subtitle}` : ""}
               </span>
-              <span className="block text-[13px] leading-snug text-text-muted">{show.synopsis}</span>
+              <span className="mb-1 block text-[12.5px] leading-snug text-text-muted sm:hidden">{show.years}</span>
+              <span className="line-clamp-2 text-[13px] leading-snug text-text-muted sm:line-clamp-none">{show.synopsis}</span>
             </span>
-            <span className="flex-shrink-0 whitespace-nowrap text-[13px] text-text-faint">{show.years}</span>
+            <span className="hidden flex-shrink-0 whitespace-nowrap text-[13px] text-text-faint sm:block">{show.years}</span>
           </Link>
         ))}
       </div>
 
       {open && (
-        <div className="absolute right-0 top-[52px] z-10 w-[300px] rounded-md border border-white/12 bg-bg-raised py-2 shadow-2xl">
+        <div className="absolute right-0 top-[52px] z-10 w-[300px] max-w-[calc(100vw-2.5rem)] rounded-md border border-white/12 bg-bg-raised py-2 shadow-2xl">
           {seasonOrder.map((key) => (
             <button
               key={key}

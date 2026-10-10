@@ -7,7 +7,7 @@ export default function Hero() {
   const [introOpen, setIntroOpen] = useState(false);
 
   return (
-    <div className="relative flex h-[560px] flex-col justify-end overflow-hidden px-8 md:px-14">
+    <div className="relative flex min-h-[460px] flex-col justify-end overflow-hidden px-5 pb-8 sm:px-8 sm:pb-0 md:h-[560px] md:px-14">
       <div
         className="absolute inset-0"
         style={{
@@ -51,8 +51,8 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="relative max-w-xl pb-13">
-        <h1 className="font-display mb-5 flex flex-wrap items-center gap-4 text-5xl font-bold leading-none md:text-6xl">
+      <div className="relative max-w-xl pb-8 md:pb-13">
+        <h1 className="font-display mb-5 flex flex-wrap items-center gap-3 text-4xl font-bold leading-none sm:gap-4 sm:text-5xl md:text-6xl">
           Harleen <span className="inline-block border-[3px] border-text px-4 pb-2 pt-1">Kaur</span>
         </h1>
         <div className="mb-4 flex flex-wrap items-center gap-2.5 text-sm font-semibold text-text-muted">
@@ -68,21 +68,21 @@ export default function Hero() {
           I turn ambiguous problems into shipped products — from capital projects at P&amp;G to AI agents built
           solo overnight. This is the story so far, told the way I actually think about it: as a series.
         </p>
-        <div className="flex gap-3.5">
+        <div className="flex flex-wrap gap-2.5 sm:gap-3.5">
           <button
             onClick={() => setIntroOpen(true)}
-            className="flex items-center gap-2.5 rounded-md bg-text px-6 py-3.5 text-[15px] font-bold text-bg"
+            className="flex items-center gap-2 rounded-md bg-text px-4 py-2.5 text-sm font-bold text-bg sm:gap-2.5 sm:px-6 sm:py-3.5 sm:text-[15px]"
           >
-            <svg viewBox="0 0 20 20" width="15" height="15" fill="currentColor">
+            <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor" className="sm:h-[15px] sm:w-[15px]">
               <path d="M5 3l12 7-12 7V3z" />
             </svg>
             Play Intro
           </button>
           <a
             href="/browse?season=experience"
-            className="flex items-center gap-2.5 rounded-md border border-white/15 bg-white/10 px-6 py-3.5 text-[15px] font-bold backdrop-blur-sm"
+            className="flex items-center gap-2 rounded-md border border-white/15 bg-white/10 px-4 py-2.5 text-sm font-bold backdrop-blur-sm sm:gap-2.5 sm:px-6 sm:py-3.5 sm:text-[15px]"
           >
-            <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6">
+            <svg viewBox="0 0 20 20" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.6" className="sm:h-4 sm:w-4">
               <circle cx="10" cy="10" r="8" />
               <line x1="10" y1="9.2" x2="10" y2="14" />
               <circle cx="10" cy="6.3" r="0.9" fill="currentColor" stroke="none" />
@@ -93,7 +93,7 @@ export default function Hero() {
             href="/Harleen_Kaur_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2.5 rounded-md border border-white/15 bg-white/10 px-6 py-3.5 text-[15px] font-bold backdrop-blur-sm"
+            className="flex items-center gap-2 rounded-md border border-white/15 bg-white/10 px-4 py-2.5 text-sm font-bold backdrop-blur-sm sm:gap-2.5 sm:px-6 sm:py-3.5 sm:text-[15px]"
           >
             Resume
           </a>
@@ -101,7 +101,7 @@ export default function Hero() {
             href="https://www.linkedin.com/in/harleenkauriitb/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2.5 rounded-md border border-white/15 bg-white/10 px-6 py-3.5 text-[15px] font-bold backdrop-blur-sm"
+            className="flex items-center gap-2 rounded-md border border-white/15 bg-white/10 px-4 py-2.5 text-sm font-bold backdrop-blur-sm sm:gap-2.5 sm:px-6 sm:py-3.5 sm:text-[15px]"
           >
             LinkedIn
           </a>

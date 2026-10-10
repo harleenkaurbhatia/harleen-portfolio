@@ -71,14 +71,14 @@ export default function EpisodePlayer({ episode, index, total, color, showTitle,
             </svg>
           </button>
 
-          <div className="relative flex min-h-full flex-col justify-center px-8 py-24 md:px-16">
+          <div className="relative flex min-h-full flex-col justify-center px-6 pb-40 pt-20 sm:px-8 md:px-16 md:pb-44 md:pt-24">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, ease: "easeOut", delay: 0.05 }}
               className="max-w-2xl"
             >
-              <div className="mb-4 flex items-center gap-2.5 text-xs font-bold uppercase tracking-widest text-accent">
+              <div className="mb-4 flex flex-wrap items-center gap-2.5 text-xs font-bold uppercase tracking-widest text-accent">
                 <span className="flex h-4 w-4 items-center justify-center rounded-full bg-accent/20">
                   <svg viewBox="0 0 20 20" width="8" height="8" fill="currentColor" className="ml-px">
                     <path d="M5 3l12 7-12 7V3z" />
@@ -87,7 +87,7 @@ export default function EpisodePlayer({ episode, index, total, color, showTitle,
                 Now Playing · {showTitle} · Episode {index + 1} of {total}
               </div>
 
-              <h1 className="font-display mb-6 text-4xl font-bold leading-tight md:text-5xl">{episode.title}</h1>
+              <h1 className="font-display mb-6 text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">{episode.title}</h1>
 
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
@@ -100,7 +100,7 @@ export default function EpisodePlayer({ episode, index, total, color, showTitle,
             </motion.div>
           </div>
 
-          <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/70 to-transparent px-8 pb-6 pt-10 md:px-16">
+          <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/80 to-transparent px-6 pb-6 pt-10 sm:px-8 md:px-16">
             <div className="mb-3 h-[3px] w-full overflow-hidden rounded-full bg-white/15">
               <motion.div
                 key={`bar-${index}`}

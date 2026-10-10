@@ -14,22 +14,22 @@ export default async function BrowsePage({
   const initialSeason = VALID_SEASONS.includes(season as Category) ? (season as Category) : "experience";
 
   return (
-    <div className="mx-auto max-w-4xl px-6 pb-20 pt-6 md:px-10">
+    <div className="mx-auto max-w-4xl px-4 pb-20 pt-6 sm:px-6 md:px-10">
       <div
-        className="relative mb-2 overflow-hidden rounded-xl px-9 pb-9 pt-11"
+        className="relative mb-2 overflow-hidden rounded-xl px-5 pb-7 pt-10 sm:px-9 sm:pb-9 sm:pt-11"
         style={{
           background:
             "radial-gradient(ellipse 700px 320px at 30% 0%, oklch(0.28 0.06 45 / 0.55), transparent 65%), linear-gradient(180deg, oklch(0.2 0.025 48) 0%, var(--color-bg) 100%)",
         }}
       >
         <CloseButton />
-        <h1 className="font-display mb-1 text-4xl font-bold">Harleen Kaur</h1>
+        <h1 className="font-display mb-1 text-3xl font-bold sm:text-4xl">Harleen Kaur</h1>
         <p className="mb-4.5 text-[13px] italic text-text-faint">The Complete Story — All Seasons</p>
         <p className="mb-5 text-[13px] text-text-muted">
           2022 – Present <span className="mx-2">·</span> 3 Seasons <span className="mx-2">·</span> Product &amp; AI
         </p>
-        <div className="flex items-center gap-3">
-          <button className="flex items-center gap-2.5 rounded-md bg-text px-5.5 py-2.75 text-[13.5px] font-bold text-bg">
+        <div className="flex flex-wrap items-center gap-3">
+          <button className="flex items-center gap-2 rounded-md bg-text px-4 py-2.5 text-[13px] font-bold text-bg sm:gap-2.5 sm:px-5.5 sm:py-2.75 sm:text-[13.5px]">
             <svg viewBox="0 0 20 20" width="12" height="12" fill="currentColor">
               <path d="M5 3l12 7-12 7V3z" />
             </svg>
