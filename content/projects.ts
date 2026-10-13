@@ -2,6 +2,44 @@ import type { ShowEntry } from "./types";
 
 export const projects: ShowEntry[] = [
   {
+    slug: "sahayak",
+    category: "projects",
+    title: "Sahayak",
+    subtitle: "Personal Project, Android Voice Agent",
+    years: "2026",
+    tags: ["Agentic AI", "Android", "Accessibility API"],
+    color: "oklch(0.44 0.12 145)",
+    repoUrl: "https://github.com/harleenkaurbhatia/sahayak",
+    synopsis:
+      "An Android voice agent that operates the phone for elderly parents: they tap a floating mic, speak in Hindi, English, or Punjabi, and the agent reads the screen through the Accessibility API and acts, instead of just explaining what to do.",
+    episodes: [
+      {
+        title: "Removing the Middleman",
+        summary: "A PDF won't open, so they call their kid. Sahayak answers instead.",
+        readTime: "4 min",
+        body: "My parents get stuck on their phones every week: a PDF won't open, a button does nothing, they don't know how to send money on WhatsApp. Calling me or asking ChatGPT still means they have to follow the steps themselves, which is exactly the skill gap that got them stuck in the first place. Sahayak removes that middle step entirely: press one floating button, say the problem out loud, and the agent looks at the actual screen and does it, rather than describing where to tap. The loop is observe, think, act: an accessibility tree plus a screenshot go to Claude, which picks the next action (tap, type, scroll, open an app, ask the user, or just say the answer), repeated for up to 25 steps until the job is done.",
+      },
+      {
+        title: "Two Brains, One Loop",
+        summary: "Claude Code over a laptop bridge, or the Claude API directly on-device.",
+        readTime: "4 min",
+        body: "The agent loop is shared by two interchangeable brains. The default for a real install calls the Claude API directly with a key the family sets up once. The developer mode instead runs Claude Code on the child's own computer: a small localhost bridge turns each screen into a `claude -p` call with a JSON-schema'd action reply, and `adb reverse` tunnels it to the phone over USB, so there's no API key on the device at all during development and testing. Both brains execute through the same `ToolRunner`, which also owns every safety gate, so the confirmation and scam-detection logic can't be bypassed by swapping which model is doing the thinking.",
+      },
+      {
+        title: "One Confirmation Gate for Everything Irreversible",
+        summary: "Pay, send, book, submit: blocked in code until the parent says yes out loud.",
+        readTime: "4 min",
+        body: "The riskiest part of handing an agent control of a parent's phone is anything irreversible: paying, sending money, submitting a form, placing an order. The prompt tells the agent to confirm amount and recipient out loud, and the code enforces it independently: any tap on a pay- or send-looking button, including a label nested deep inside it or a raw coordinate tap, is blocked unless the last spoken answer was a yes. Passwords, UPI PINs, and OTPs are never typed by the agent; password fields are refused at the action layer, and the parent is asked to enter sensitive values themselves. It may read an OTP from SMS to log into an app the parent asked for, but it's never spoken aloud or sent anywhere. In one real test run, asked only to explain and reply to a message, it unprompted flagged that the sender was an unsaved number, the classic 'new number, beta here' scam, and told the child.",
+      },
+      {
+        title: "The Child Is the Real Customer",
+        summary: "An SMS after every session, and an honest list of what still doesn't work.",
+        readTime: "4 min",
+        body: "The parent uses the app, but the child installs it, sets up the family profile, and is the one who actually needs visibility: after every session, Sahayak sends an SMS summarizing what the parent got stuck on and what happened, so a problem at home doesn't stay invisible until the next phone call. A one-time family profile (name, address, phone, preferences) means forms and bookings don't require 20 questions each time; the agent asks only for what's actually missing. Worth being direct about limits: it's Android-only, since iOS doesn't allow one app to control another; banking screens often block screenshots via FLAG_SECURE, falling back to the accessibility element list alone; and bookings like cabs or flights use the same loop but haven't been demoed end-to-end, since the test emulator has neither those apps nor real payment credentials. Shipped as a sideloaded APK (v0.1) rather than through the Play Store, since Google restricts apps that use the Accessibility API to control the phone.",
+      },
+    ],
+  },
+  {
     slug: "mumbai-flood-warning-system",
     category: "projects",
     title: "Mumbai Flood Warning System",
