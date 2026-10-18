@@ -39,6 +39,19 @@ export default function ShowDetail({ show }: { show: ShowEntry }) {
             <circle cx="10" cy="10" r="8" />
           </svg>
         </button>
+        {show.liveUrl && (
+          <a
+            href={show.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2.5 text-[13px] font-semibold text-text hover:bg-white/20"
+          >
+            <svg viewBox="0 0 20 20" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12" />
+            </svg>
+            {show.liveLabel ?? "Open app"}
+          </a>
+        )}
         {show.repoUrl && (
           <a
             href={show.repoUrl}

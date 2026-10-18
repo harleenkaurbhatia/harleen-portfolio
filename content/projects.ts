@@ -2,6 +2,46 @@ import type { ShowEntry } from "./types";
 
 export const projects: ShowEntry[] = [
   {
+    slug: "curio",
+    category: "projects",
+    title: "Curio",
+    subtitle: "Personal Project, Knowledge Reels App",
+    years: "2026",
+    tags: ["Consumer AI", "PWA", "Cloudflare Workers"],
+    color: "oklch(0.42 0.14 340)",
+    repoUrl: "https://github.com/harleenkaurbhatia/curio",
+    liveUrl: "https://curio.hkbharleen20.workers.dev",
+    liveLabel: "Install the app",
+    synopsis:
+      "Reels, but only for things worth knowing. Curio mixes YouTube Shorts, longer recipe and science videos, and short reads on topics you pick, in English, Hindi and Hinglish. Claude vets every creator and every post, and there are no like counts, followers or friends' stories to compare yourself against. It installs on a phone straight from a link.",
+    episodes: [
+      {
+        title: "Keeping the Swipe, Dropping the Comparison",
+        summary: "I liked how Instagram feels. I didn't like how I felt after it.",
+        readTime: "3 min",
+        body: "I open Instagram in the small gaps of my day, and most of the time I close it knowing nothing new and feeling a little worse about my own life. The format was never the problem. A full-screen swipe is a great way to fill five minutes. What bothered me was everything around it: follower counts, like counts, other people's holidays. So Curio keeps the swipe and drops the social layer. You pick topics (science, psychology, founders, cooking, India news and so on) and languages, and the feed shows vetted videos and articles on those, with a Like and a Less button that only you see. There's a Done for now button that ends a session with a calm summary instead of an infinite pull, though the feed itself never runs dry.",
+      },
+      {
+        title: "Claude as the Editor",
+        summary: "Search finds the creators, Claude decides who gets in, and I learned to calibrate it.",
+        readTime: "4 min",
+        body: "For each topic, a background job searches YouTube once a day in English and Hindi, then asks Claude Haiku to score every channel it finds on consistency, clarity and credibility. Clickbait, rage-bait, reposts and hustle-flex channels are rejected with a reason. Text posts from RSS feeds, Hacker News and Bluesky get screened one by one, and each accepted post gets a one-line 'why read'. My first threshold was a guess, and it rejected 90% of perfectly good articles, so I added score anchors to the prompt and recalibrated on real output until about 58% passed with sensible rejections. Cooking taught me the other half of the lesson: YouTube search for 'easy recipe' surfaced mostly low-effort channels, and Claude correctly turned down all eight. Now each topic starts with a short list of creators people already trust (Kunal Kapur, Nisha Madhulika, Kurzgesagt, Veritasium, Y Combinator), and the creators Claude finds get added on top.",
+      },
+      {
+        title: "A Feed That Mixes on Purpose",
+        summary: "Ranking rules that stop one topic or one creator from taking over.",
+        readTime: "3 min",
+        body: "Each user's feed is ranked by topic weight, creator weight, Claude's quality score and freshness, and then a set of variety rules reshapes it. The same topic or creator never appears twice in a row, two reads never sit back to back, reads stay under 40% of a batch, and every fifth slot goes to a topic you've watched less of. Anything you've seen never comes back. News expires after three days and everything else after 45. Likes and Lesses nudge that person's weights, nobody else's. Videos are vertical Shorts under three minutes, except for topics like recipes and science, where 2 to 20 minute videos from vetted creators show up in landscape. Everything plays through YouTube's own player, so nothing is downloaded or re-hosted.",
+      },
+      {
+        title: "Free to Run, One Link to Install",
+        summary: "Cloudflare's free plan, a five-minute job, and no sign-in wall.",
+        readTime: "4 min",
+        body: "The whole thing runs on Cloudflare Workers with a D1 (SQLite) database and a cron job every five minutes. The free plan allows about 50 outbound requests per run, which shaped the design: every run does a small capped slice of work (discover, vet, fetch) and picks up where the last one stopped. Claude costs roughly $1 to $3 a month, since vetting is shared across all users. It's a PWA, so the link is the download: open it in Chrome on Android and tap Install. There's no sign-in screen. You start as a guest, your interests are kept in local storage, and you can save the account with an email later. Each item can be saved, put on a Later list, shared to WhatsApp with the original link, or answered with a thought you type or speak in English or Hindi. A private Insights tab shows your own time and topics, and no one else's. I wrote the core logic test-first: 61 unit tests and a 34-step check at phone width with Playwright. What's missing: Google sign-in and password reset, and LinkedIn and X posts, since one has no read API and the other is paid.",
+      },
+    ],
+  },
+  {
     slug: "sahayak",
     category: "projects",
     title: "Sahayak",

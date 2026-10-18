@@ -18,6 +18,9 @@ export type ShowEntry = {
   color: string;
   episodes: Episode[];
   repoUrl?: string;
+  /** Live app or download link, shown as a button next to GitHub. */
+  liveUrl?: string;
+  liveLabel?: string;
 };
 
 export type BlogPost = {
