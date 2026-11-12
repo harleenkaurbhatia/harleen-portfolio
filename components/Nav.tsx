@@ -2,26 +2,24 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const LINKS = [
   { href: "/", label: "Home" },
-  { href: "/browse?season=experience", label: "Experience", season: "experience" },
-  { href: "/browse?season=projects", label: "Projects", season: "projects" },
-  { href: "/browse?season=education", label: "Education", season: "education" },
+  { href: "/experience", label: "Experience", season: "experience" },
+  { href: "/projects", label: "Projects", season: "projects" },
+  { href: "/education", label: "Education", season: "education" },
   { href: "/blog", label: "Blog" },
 ] as const;
 
 export default function Nav() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const activeSeason = searchParams.get("season");
   const [mobileOpen, setMobileOpen] = useState(false);
 
   // close the mobile menu on route change, and never leave the page unscrollable behind it
   useEffect(() => {
     setMobileOpen(false);
-  }, [pathname, activeSeason]);
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
@@ -33,7 +31,7 @@ export default function Nav() {
   function isActive(link: (typeof LINKS)[number]) {
     if (link.label === "Home") return pathname === "/";
     if (link.label === "Blog") return pathname.startsWith("/blog");
-    return pathname === "/browse" && activeSeason === link.season;
+    return pathname === `/${link.season}`;
   }
 
   return (

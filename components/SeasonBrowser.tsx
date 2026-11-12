@@ -22,7 +22,7 @@ export default function SeasonBrowser({
   function pick(key: SeasonKey) {
     setSeason(key);
     setOpen(false);
-    router.replace(key === "all" ? "/browse" : `/browse?season=${key}`, { scroll: false });
+    router.push(key === "all" ? "/browse" : `/${key}`, { scroll: false });
   }
 
   const allEntries = seasonOrder.flatMap((k) => showsByCategory[k]);

@@ -79,7 +79,7 @@ export default function Hero() {
             Play Intro
           </button>
           <a
-            href="/browse?season=experience"
+            href="/experience"
             className="flex items-center gap-2 rounded-md border border-white/15 bg-white/10 px-4 py-2.5 text-sm font-bold backdrop-blur-sm sm:gap-2.5 sm:px-6 sm:py-3.5 sm:text-[15px]"
           >
             <svg viewBox="0 0 20 20" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.6" className="sm:h-4 sm:w-4">
