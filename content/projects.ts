@@ -51,8 +51,6 @@ export const projects: ShowEntry[] = [
     tags: ["Agentic AI", "Android", "Accessibility API"],
     color: "oklch(0.44 0.12 145)",
     repoUrl: "https://github.com/harleenkaurbhatia/sahayak",
-    video: "/work/sahayak.mp4",
-    poster: "/work/sahayak-poster.jpg",
     synopsis:
       "An Android voice agent that operates the phone for elderly parents: they tap a floating mic, speak in Hindi, English, or Punjabi, and the agent reads the screen through the Accessibility API and acts, instead of just explaining what to do.",
     episodes: [

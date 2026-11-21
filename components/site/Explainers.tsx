@@ -279,7 +279,67 @@ function Expense() {
   );
 }
 
+/* ---------- Sahayak ---------- */
+
+const STEPS = ["Reads the screen", "Explains the message aloud", "Types the reply", "Asks before sending"];
+
+function Sahayak() {
+  return (
+    <Frame label="A parent speaks in Hindi and the agent reads, explains and replies to a message on their phone">
+      <g transform="translate(70 22)">
+        <rect width="176" height="316" rx="24" fill={PAPER} stroke={INK} strokeWidth="2" />
+        <rect x="64" y="10" width="48" height="6" rx="3" fill={LINE} />
+        <text x="18" y="44" className="ex-h2" fill={INK}>Beti</text>
+        <text x="18" y="60" className="ex-mono" fill={MUTED}>SMS</text>
+        <line x1="0" x2="176" y1="72" y2="72" stroke={LINE} />
+
+        <rect x="12" y="84" width="150" height="66" rx="10" fill="#f1f1f3" />
+        <text x="22" y="104" className="ex-b" fill={INK}>Papa ETA kya hai?</text>
+        <text x="22" y="122" className="ex-b" fill={INK}>Mummy ka bday</text>
+        <text x="22" y="140" className="ex-b" fill={INK}>plan hai 🎂</text>
+
+        <g className="ex-in-60">
+          <rect x="24" y="162" width="140" height="48" rx="10" fill={BLUE} />
+          <text x="34" y="182" className="ex-b" fill="#fff">7 baje tak</text>
+          <text x="34" y="200" className="ex-b" fill="#fff">pahunch jaunga 🙂</text>
+        </g>
+
+        <rect x="14" y="270" width="112" height="30" rx="15" fill="#f1f1f3" />
+        <text x="28" y="290" className="ex-mono" fill={MUTED}>MESSAGE</text>
+        <circle cx="152" cy="285" r="20" fill={BLUE} className="ex-pulse" opacity=".25" />
+        <circle cx="152" cy="285" r="16" fill={BLUE} />
+        <rect x="148" y="276" width="8" height="12" rx="4" fill="#fff" />
+        <path d="M144 285 a8 8 0 0 0 16 0 M152 293 v4" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" />
+      </g>
+
+      <g transform="translate(286 30)">
+        <g className="ex-in-10">
+          <text className="ex-mono" fill={MUTED} y="10">PAPA · HINDI</text>
+          <rect y="20" width="300" height="56" rx="12" fill={INK} />
+          <text x="16" y="44" className="ex-b" fill="#fff">“Beti ka message padh ke sunao,</text>
+          <text x="16" y="64" className="ex-b" fill="#fff">aur jawab bhi de do.”</text>
+        </g>
+
+        {STEPS.map((step, i) => (
+          <g key={step} transform={`translate(0 ${104 + i * 40})`}>
+            <rect width="300" height="32" rx="6" fill={PAPER} stroke={LINE} />
+            <rect x="12" y="10" width="12" height="12" rx="2" fill="none" stroke={LINE} strokeWidth="1.5" />
+            <g className={`ex-in-${[25, 35, 45, 55][i]}`}>
+              <rect x="12" y="10" width="12" height="12" rx="2" fill={BLUE} />
+              <path d="M15 16 l2.5 2.5 L21.5 13" fill="none" stroke="#fff" strokeWidth="1.6" strokeLinecap="round" />
+            </g>
+            <text x="36" y="21" className="ex-b" fill={INK}>{step}</text>
+          </g>
+        ))}
+
+        <text y="292" className="ex-mono" fill={MUTED}>HINDI · ENGLISH · PUNJABI</text>
+      </g>
+    </Frame>
+  );
+}
+
 export const explainers: Record<string, () => React.ReactElement> = {
+  sahayak: Sahayak,
   "mumbai-flood-warning-system": Flood,
   "dynamic-ad-placement": AdPlacement,
   "sector-forecasting": Forecast,

@@ -163,6 +163,7 @@ a { color: inherit; text-decoration: none; }
 .ex-scan { opacity: 0; animation: ex-scan 8s infinite; }
 .ex-draw { stroke-dasharray: 1; stroke-dashoffset: 0; animation: ex-draw 8s ease-in-out infinite; }
 .ex-typing { opacity: 0; animation: ex-typing 8s infinite; }
+.ex-pulse { transform-origin: center; animation: ex-pulse 1.6s ease-out infinite; }
 .ex-dot { animation: ex-dot .9s ease-in-out infinite; }
 .ex-langs { animation: ex-langs 8s steps(6) infinite; }
 
@@ -174,6 +175,7 @@ a { color: inherit; text-decoration: none; }
 @keyframes ex-scan { 0%, 18% { opacity: 0; } 24%, 46% { opacity: 1; } 52%, 100% { opacity: 0; } }
 @keyframes ex-draw { 0%, 5% { stroke-dashoffset: 1; } 40%, 92% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 1; } }
 @keyframes ex-typing { 0%, 16% { opacity: 0; } 20%, 42% { opacity: 1; } 45%, 100% { opacity: 0; } }
+@keyframes ex-pulse { from { transform: scale(1); opacity: .35; } to { transform: scale(1.9); opacity: 0; } }
 @keyframes ex-dot { 0%, 100% { opacity: .3; } 50% { opacity: 1; } }
 @keyframes ex-langs { from { transform: translateY(0); } to { transform: translateY(252px); } }
 @keyframes ex-in-5 { 0%, 5% { opacity: 0; transform: translateY(6px); } 11%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
