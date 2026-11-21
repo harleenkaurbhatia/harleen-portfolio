@@ -78,14 +78,11 @@ a { color: inherit; text-decoration: none; }
 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .card { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; transition: border-color .2s, transform .2s; }
 .card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.thumb {
-  position: relative; aspect-ratio: 16/9; background-color: var(--surface); overflow: hidden;
-  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 16px 16px; display: grid; place-items: center; border-bottom: 1px solid var(--line);
-}
-.thumb-title { font-size: 26px; font-weight: 600; letter-spacing: -0.03em; background: var(--bg); padding: 6px 14px; border: 1px solid var(--line); border-radius: 6px; text-align: center; max-width: 80%; }
-.thumb-phone { position: absolute; top: 12%; width: 34%; border-radius: 14px; border: 1px solid var(--line); box-shadow: 0 12px 32px rgba(0, 0, 0, .12); transition: transform .3s; }
-.card:hover .thumb-phone { transform: translateY(-6px); }
+.media { position: relative; aspect-ratio: 16/9; overflow: hidden; background: var(--surface); border-bottom: 1px solid var(--line); display: grid; place-items: center; }
+.media > video, .media > img, .media > svg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.media > img, .media > video { transition: transform .4s ease; }
+.card:hover .media > img, .card:hover .media > video { transform: scale(1.02); }
+.thumb-title { font-size: 26px; font-weight: 600; letter-spacing: -0.03em; text-align: center; max-width: 80%; }
 .card-body { padding: 22px 24px 24px; display: flex; flex-direction: column; flex: 1; }
 .meta { font-family: var(--mono); font-size: 12px; color: var(--faint); margin-bottom: 8px; }
 .card h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; margin: 0; }
@@ -109,8 +106,7 @@ a { color: inherit; text-decoration: none; }
 .facts span { display: block; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--faint); margin-bottom: 4px; }
 .facts b { font-weight: 500; font-size: 15px; }
 .links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-.shot { aspect-ratio: 16/8; border-radius: 10px; border: 1px solid var(--line); margin: 8px 0 48px; }
-.shot .thumb-phone { width: 22%; top: 8%; }
+.shot { border-radius: 10px; border: 1px solid var(--line); margin: 8px 0 48px; }
 .prose-row { display: grid; grid-template-columns: 220px 1fr; gap: 32px; padding: 28px 0; border-top: 1px solid var(--line); }
 .prose-row h2 { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; margin: 0; line-height: 1.4; }
 .prose-row .sub { display: block; margin-top: 6px; font-size: 13px; color: var(--faint); font-weight: 400; line-height: 1.45; }
@@ -149,5 +145,57 @@ a { color: inherit; text-decoration: none; }
   .prose-row { grid-template-columns: 1fr; gap: 10px; }
   .hero { padding-top: 48px; }
   .page-head { padding-top: 48px; }
-  .shot .thumb-phone { width: 40%; }
+}
+
+/* ---------- project explainers (components/site/Explainers.tsx) ---------- */
+.ex { display: block; width: 100%; height: 100%; }
+.ex text { font-family: var(--sans); }
+.ex .ex-mono { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; }
+.ex .ex-h { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; }
+.ex .ex-h2 { font-size: 15px; font-weight: 600; }
+.ex .ex-b { font-size: 14px; }
+.ex * { transform-box: fill-box; }
+.ex-ward { animation: ex-ward 8s infinite; }
+.ex-rain { animation: ex-rain 1.1s linear infinite; }
+.ex-grow { transform-origin: left; animation: ex-grow 8s ease-out infinite; }
+.ex-grow-late { transform-origin: left; animation: ex-grow-late 8s ease-out infinite; }
+.ex-progress { transform-origin: left; animation: ex-grow-linear 8s linear infinite; }
+.ex-scan { opacity: 0; animation: ex-scan 8s infinite; }
+.ex-draw { stroke-dasharray: 1; stroke-dashoffset: 0; animation: ex-draw 8s ease-in-out infinite; }
+.ex-typing { opacity: 0; animation: ex-typing 8s infinite; }
+.ex-dot { animation: ex-dot .9s ease-in-out infinite; }
+.ex-langs { animation: ex-langs 8s steps(6) infinite; }
+
+@keyframes ex-ward { 0%, 12% { fill: #e9e9ec; } 50%, 92% { fill: #002fa7; } 100% { fill: #e9e9ec; } }
+@keyframes ex-rain { from { transform: translateY(0); opacity: 0; } 15% { opacity: .8; } to { transform: translateY(330px); opacity: 0; } }
+@keyframes ex-grow { 0%, 8% { transform: scaleX(0); } 50%, 92% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+@keyframes ex-grow-late { 0%, 40% { transform: scaleX(.55); } 52%, 92% { transform: scaleX(1); } 100% { transform: scaleX(.55); } }
+@keyframes ex-grow-linear { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes ex-scan { 0%, 18% { opacity: 0; } 24%, 46% { opacity: 1; } 52%, 100% { opacity: 0; } }
+@keyframes ex-draw { 0%, 5% { stroke-dashoffset: 1; } 40%, 92% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 1; } }
+@keyframes ex-typing { 0%, 16% { opacity: 0; } 20%, 42% { opacity: 1; } 45%, 100% { opacity: 0; } }
+@keyframes ex-dot { 0%, 100% { opacity: .3; } 50% { opacity: 1; } }
+@keyframes ex-langs { from { transform: translateY(0); } to { transform: translateY(252px); } }
+@keyframes ex-in-5 { 0%, 5% { opacity: 0; transform: translateY(6px); } 11%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+.ex-in-5 { animation: ex-in-5 8s ease-out infinite; }
+@keyframes ex-in-10 { 0%, 10% { opacity: 0; transform: translateY(6px); } 16%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+.ex-in-10 { animation: ex-in-10 8s ease-out infinite; }
+@keyframes ex-in-15 { 0%, 15% { opacity: 0; transform: translateY(6px); } 21%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+.ex-in-15 { animation: ex-in-15 8s ease-out infinite; }
+@keyframes ex-in-25 { 0%, 25% { opacity: 0; transform: translateY(6px); } 31%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+.ex-in-25 { animation: ex-in-25 8s ease-out infinite; }
+@keyframes ex-in-35 { 0%, 35% { opacity: 0; transform: translateY(6px); } 41%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+.ex-in-35 { animation: ex-in-35 8s ease-out infinite; }
+@keyframes ex-in-40 { 0%, 40% { opacity: 0; transform: translateY(6px); } 46%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+.ex-in-40 { animation: ex-in-40 8s ease-out infinite; }
+@keyframes ex-in-45 { 0%, 45% { opacity: 0; transform: translateY(6px); } 51%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+.ex-in-45 { animation: ex-in-45 8s ease-out infinite; }
+@keyframes ex-in-50 { 0%, 50% { opacity: 0; transform: translateY(6px); } 56%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+.ex-in-50 { animation: ex-in-50 8s ease-out infinite; }
+@keyframes ex-in-55 { 0%, 55% { opacity: 0; transform: translateY(6px); } 61%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+.ex-in-55 { animation: ex-in-55 8s ease-out infinite; }
+@keyframes ex-in-60 { 0%, 60% { opacity: 0; transform: translateY(6px); } 66%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+.ex-in-60 { animation: ex-in-60 8s ease-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .ex * { animation: none !important; }
 }

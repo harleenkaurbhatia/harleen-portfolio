@@ -51,7 +51,8 @@ export const projects: ShowEntry[] = [
     tags: ["Agentic AI", "Android", "Accessibility API"],
     color: "oklch(0.44 0.12 145)",
     repoUrl: "https://github.com/harleenkaurbhatia/sahayak",
-    image: "/work/sahayak.jpg",
+    video: "/work/sahayak.mp4",
+    poster: "/work/sahayak-poster.jpg",
     synopsis:
       "An Android voice agent that operates the phone for elderly parents: they tap a floating mic, speak in Hindi, English, or Punjabi, and the agent reads the screen through the Accessibility API and acts, instead of just explaining what to do.",
     episodes: [
@@ -121,6 +122,8 @@ export const projects: ShowEntry[] = [
     tags: ["Privacy Tooling", "Chrome Extension", "Open Source"],
     color: "oklch(0.4 0.1 300)",
     repoUrl: "https://github.com/harleenkaurbhatia/pii-sanitizer",
+    video: "/work/pii.mp4",
+    poster: "/work/pii-poster.jpg",
     synopsis:
       "A local-only privacy tool for Claude.ai and ChatGPT: a Chrome extension paired with a FastAPI + Presidio backend that detects and redacts PII before any message leaves the user's machine.",
     episodes: [

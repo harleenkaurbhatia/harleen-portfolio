@@ -1,11 +1,11 @@
 import Link from "next/link";
 import type { ShowEntry } from "@/content/types";
-import Thumb from "./Thumb";
+import Media from "./Media";
 
 export default function WorkCard({ entry }: { entry: ShowEntry }) {
   return (
     <Link href={`/work/${entry.slug}`} className="card">
-      <Thumb entry={entry} />
+      <Media entry={entry} />
       <div className="card-body">
         <div className="meta">
           {entry.subtitle} · {entry.years}

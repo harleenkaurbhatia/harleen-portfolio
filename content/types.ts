@@ -21,8 +21,10 @@ export type ShowEntry = {
   /** Live app or download link, shown as a button next to GitHub. */
   liveUrl?: string;
   liveLabel?: string;
-  /** Screenshot under /public, shown on cards and the detail page. */
+  /** 16:9 media under /public, shown on cards and the detail page. Video wins over image. */
   image?: string;
+  video?: string;
+  poster?: string;
 };
 
 export type BlogPost = {

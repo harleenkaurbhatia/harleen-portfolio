@@ -2,7 +2,8 @@ import Link from "next/link";
 import type { ShowEntry } from "@/content/types";
 import Label from "./Label";
 import Prose from "./Prose";
-import Thumb from "./Thumb";
+import Media from "./Media";
+import { explainers } from "./Explainers";
 
 type Props = { entry: ShowEntry; backHref: string; backLabel: string; kicker: string };
 
@@ -49,7 +50,7 @@ export default function EntryDetail({ entry, backHref, backLabel, kicker }: Prop
         )}
       </section>
 
-      {entry.image && <Thumb entry={entry} className="shot" />}
+      {(entry.video || entry.image || explainers[entry.slug]) && <Media entry={entry} className="shot" />}
 
       {entry.episodes.map((ep) => (
         <section key={ep.title} className="prose-row">
