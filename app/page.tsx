@@ -36,16 +36,9 @@ export default function HomePage() {
             <span>value shipped</span>
           </div>
           <div>
-            <b>Top 75</b>
+            <b>Top 3</b>
             <span>of 1,200+ teams, Antler Crackathon</span>
           </div>
-        </div>
-        <div className="logos">
-          <span className="label">Worked with</span>
-          <span className="logo">Procter &amp; Gamble</span>
-          <span className="logo">Remedo</span>
-          <span className="logo">MCGM</span>
-          <span className="logo">Antler</span>
         </div>
       </section>
 

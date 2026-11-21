@@ -157,11 +157,11 @@ export const projects: ShowEntry[] = [
     title: "DynamicAdPlacement",
     subtitle: "Personal Project, Antler Crackathon",
     years: "2025",
-    tags: ["AI Video", "Top 75 of 1,200+"],
+    tags: ["AI Video", "Top 3 of 1,200+"],
     color: "oklch(0.44 0.13 15)",
     repoUrl: "https://github.com/harleenkaurbhatia/dynamic-ad-placement",
     synopsis:
-      "An AI-driven virtual product placement pipeline for OTT and streaming video that inserts ads into existing footage without reshoots. Selected top 75 of 1,200+ teams at the Antler Crackathon.",
+      "An AI-driven virtual product placement pipeline for OTT and streaming video that inserts ads into existing footage without reshoots. Selected top 3 of 1,200+ teams at the Antler Crackathon.",
     episodes: [
       {
         title: "Finding the Ad Slot",
@@ -182,10 +182,10 @@ export const projects: ShowEntry[] = [
         body: "Three separate placement engines handle the three ad types. Visual placement runs through Runway Aleph 2.0 for video-to-video compositing, matching lighting, perspective, and film grain so the inserted brand reads as part of the original shot rather than pasted on top. Audio placement writes a short ad line via an LLM and ducks it into a detected silent gap using edge-tts. Dialogue placement is the hardest of the three: it rewrites a line so a character says a brand name instead of a generic term, in that character's own cloned voice, timed to fit the existing pause. It's tried through Runway Seed Audio first, with local VoiceCraft, XTTS, and edge-tts as fallbacks, so the feature still works without a paid API key, just with lower fidelity.",
       },
       {
-        title: "Top 75 of 1,200+",
+        title: "Top 3 of 1,200+",
         summary: "What it took to place at the Antler Crackathon, and what it isn't yet.",
         readTime: "3 min",
-        body: "Built as a hackathon/demo project (a Flask API backend plus a React/Vite frontend), inserting ads into existing footage without reshoots, and placing top 75 of 1,200+ teams at the Antler Crackathon. Worth being direct about scope: both the visual and dialogue engines depend on paid third-party APIs (OpenRouter for detection/LLM calls, Runway for compositing and default voice cloning); only the local dialogue fallbacks run without them, and detection plus voice-cloned dialogue swaps run on CPU by default, so a longer clip takes real time. There's no auth on the API and no request validation beyond the happy path; it was built to prove the pipeline works end-to-end, not hardened for production traffic.",
+        body: "Built as a hackathon/demo project (a Flask API backend plus a React/Vite frontend), inserting ads into existing footage without reshoots, and placing top 3 of 1,200+ teams at the Antler Crackathon. Worth being direct about scope: both the visual and dialogue engines depend on paid third-party APIs (OpenRouter for detection/LLM calls, Runway for compositing and default voice cloning); only the local dialogue fallbacks run without them, and detection plus voice-cloned dialogue swaps run on CPU by default, so a longer clip takes real time. There's no auth on the API and no request validation beyond the happy path; it was built to prove the pipeline works end-to-end, not hardened for production traffic.",
       },
     ],
   },
