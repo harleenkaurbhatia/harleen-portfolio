@@ -10,11 +10,9 @@ export default function HomePage() {
   return (
     <main>
       <section className="wrap hero">
-        <span className="tag">
-          <i className="px" />
-          Hey, I&apos;m Harleen
-        </span>
         <h1 className="h-display">
+          Hey, I&apos;m Harleen.
+          <br />
           I turn ambiguous problems
           <br />
           into shipped products.
