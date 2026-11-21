@@ -141,7 +141,7 @@ export const experience: ShowEntry[] = [
     slug: "modul-cofounder",
     category: "experience",
     title: "Modul",
-    subtitle: "Co-founder, Marketing & Operations",
+    subtitle: "Co-founder",
     years: "2024",
     tags: ["Pilot", "Home Automation", "Customer Discovery"],
     color: "oklch(0.38 0.06 280)",

@@ -1,67 +1,79 @@
-import Hero from "@/components/Hero";
-import Row from "@/components/Row";
-import { Card, EpisodeCard } from "@/components/Card";
-import { experience, projects, education, blog } from "@/lib/content";
+import Link from "next/link";
+import Label from "@/components/site/Label";
+import WorkCard from "@/components/site/WorkCard";
+import ExperienceRows from "@/components/site/ExperienceRows";
+import { experience, projects, featuredSlugs } from "@/lib/content";
+
+const featured = featuredSlugs.map((slug) => projects.find((p) => p.slug === slug)!).filter(Boolean);
 
 export default function HomePage() {
   return (
-    <div>
-      <Hero />
+    <main>
+      <section className="wrap hero">
+        <span className="tag">
+          <i className="px" />
+          Hey, I&apos;m Harleen
+        </span>
+        <h1 className="h-display">
+          I turn ambiguous problems
+          <br />
+          into shipped products.
+        </h1>
+        <p className="lede">
+          From capital projects at P&amp;G to AI agents built solo overnight. Product, AI and growth, with an
+          IIT Bombay engineering degree underneath.
+        </p>
+        <div className="hero-actions">
+          <Link href="/work" className="btn btn-dark">
+            View work
+          </Link>
+          <Link href="/contact" className="btn btn-line">
+            Get in touch
+          </Link>
+        </div>
 
-      <div className="px-8 pb-16 pt-2 md:px-14">
-        <Row title="Experience">
-          {experience.map((show) => (
-            <Card
-              key={show.slug}
-              href={`/show/${show.slug}`}
-              title={show.title}
-              subtitle={`${show.subtitle} · ${show.years}`}
-              color={show.color}
-              badge={show.tags[0]}
-            />
-          ))}
-        </Row>
+        <div className="proof">
+          <div>
+            <b>$70M+</b>
+            <span>value shipped</span>
+          </div>
+          <div>
+            <b>Top 75</b>
+            <span>of 1,200+ teams, Antler Crackathon</span>
+          </div>
+        </div>
+        <div className="logos">
+          <span className="label">Worked with</span>
+          <span className="logo">Procter &amp; Gamble</span>
+          <span className="logo">Remedo</span>
+          <span className="logo">MCGM</span>
+          <span className="logo">Antler</span>
+        </div>
+      </section>
 
-        <Row title="Projects">
-          {projects.map((show) => (
-            <Card
-              key={show.slug}
-              href={`/show/${show.slug}`}
-              title={show.title}
-              subtitle={show.subtitle}
-              color={show.color}
-            />
+      <section className="wrap section">
+        <div className="section-head">
+          <Label>Selected work</Label>
+          <Link href="/work" className="more">
+            All projects →
+          </Link>
+        </div>
+        <div className="grid">
+          {featured.map((p) => (
+            <WorkCard key={p.slug} entry={p} />
           ))}
-        </Row>
+        </div>
+      </section>
 
-        <Row title="Education">
-          {education.map((show) => (
-            <Card
-              key={show.slug}
-              href={`/show/${show.slug}`}
-              title={show.title}
-              subtitle={show.subtitle}
-              color={show.color}
-              badge={show.tags[0]}
-            />
-          ))}
-        </Row>
-
-        <Row title="Blog — Continue the Series" href="/blog">
-          {blog.map((post, i) => (
-            <EpisodeCard
-              key={post.slug}
-              href={`/blog/${post.slug}`}
-              title={post.title}
-              subtitle={post.readTime}
-              color={post.color}
-              badge={post.status === "draft" ? `Ep. ${i + 1} · Soon` : `Ep. ${i + 1}`}
-              progress={post.status === "draft" ? undefined : 100}
-              dimmed={post.status === "draft"}
-            />
-          ))}
-        </Row>
-      </div>
-    </div>
+      <section className="wrap section">
+        <div className="section-head">
+          <Label>Experience</Label>
+          <Link href="/experience" className="more">
+            Full timeline →
+          </Link>
+        </div>
+        <ExperienceRows entries={experience} />
+      </section>
+    </main>
   );
 }

@@ -1,24 +1,26 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
+import { Instrument_Sans, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import Nav from "@/components/Nav";
-import PageTransition from "@/components/PageTransition";
+import Nav from "@/components/site/Nav";
+import Footer from "@/components/site/Footer";
 import "./globals.css";
 
+const sans = Instrument_Sans({ subsets: ["latin"], variable: "--font-sans" });
+const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" });
+
 export const metadata: Metadata = {
-  title: "Harleen Kaur — The Series",
-  description: "Product, AI, and a few unscripted detours — told as a series.",
+  title: "Harleen Kaur",
+  description: "Product, AI and growth. I turn ambiguous problems into shipped products.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className="h-full antialiased">
-      <body className="flex min-h-full flex-col bg-bg text-text">
-        <Suspense fallback={<div className="h-[68px]" />}>
-          <Nav />
-        </Suspense>
-        <PageTransition>{children}</PageTransition>
+    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
+      <body>
+        <Nav />
+        {children}
+        <Footer />
         <Analytics />
         <SpeedInsights />
       </body>
