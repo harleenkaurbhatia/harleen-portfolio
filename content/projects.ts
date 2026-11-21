@@ -266,4 +266,53 @@ export const projects: ShowEntry[] = [
       },
     ],
   },
+  {
+    slug: "modul",
+    category: "projects",
+    title: "Modul",
+    subtitle: "IIT Bombay IDEAS Program, Smart Home Hub",
+    years: "2024",
+    tags: ["IoT", "Zigbee", "Hardware"],
+    color: "oklch(0.38 0.06 280)",
+    synopsis:
+      "A modular smart home hub built under IIT Bombay's IDEAS program. A Zigbee mesh coordinator with drivers for Z-Wave, Bluetooth and Wi-Fi devices from any brand, a model that learns the household's routine, and fall detection for people who live alone.",
+    episodes: [
+      {
+        title: "System Architecture",
+        summary: "A Zigbee hub, a brand-agnostic driver layer, one app, a routine model and safety monitoring.",
+        readTime: "4 min",
+        body: "Modul had five layers.\n\nThe hub: a single unit acting as the coordinator for every device in the home over one secure network. We picked Zigbee as the primary protocol because it is low power and cheap, and because it forms a mesh: mains-powered devices relay signals for each other, so coverage grows across the house as devices are added instead of depending on one router's range.\nThe driver layer: software that translated signals from any brand over Zigbee, Z-Wave, Bluetooth and Wi-Fi into one common device model, so everything above it never had to care which company made a bulb or a lock.\nOne app: lighting, temperature, appliances and security in a single place, built on that common model.\nThe AI layer: it learned the household's routine and adjusted the home without being asked. Assistants like Alexa wait for a command; this one was meant to act before you ask.\nSafety monitoring: fall detection, signs of declining health, and automatic calls or alerts to family.\n\nThe system was modular by design. A family could start with one room and add devices over time, and the hub would pick each one up through the same driver layer.",
+      },
+      {
+        title: "Privacy and Where the Data Lives",
+        summary: "Users' biggest worry decided the architecture I would build today.",
+        readTime: "2 min",
+        body: "The strongest signal from user research was about data, not features. People did not want a device learning their routines and sending that data to a company's servers. A home that notices when you fall has to watch you, so this concern sits right at the core of the product.\n\nWe never shipped. If I built it again, the routine model, fall detection and all event history would run on the hub inside the home, with nothing sent to the cloud. Alerts to family would be the only thing that leaves the house.",
+      },
+      {
+        title: "Hardware Design",
+        summary: "A black metal cube with a face, and glass sensor patches.",
+        readTime: "1 min",
+        body: "The hub was a 10 cm black metal cube. The front was an LED screen with two oval eyes and a small smile. The power button was the “o” in “modul”, and the name glowed white when it was on. Alongside it were sensor patches: 11 cm glass discs with the circuitry visible inside, a suction cup on the back, and a soft light that showed when a sensor was active.",
+      },
+      {
+        title: "Why We Built It",
+        summary: "A home that notices when someone living alone needs help.",
+        readTime: "2 min",
+        body: "The idea came from older people who live alone. If someone falls, forgets the stove, or needs help at night, there is often nobody around to notice. In my second year at IIT Bombay, a friend and I started Modul under the IDEAS program to build a home that could notice for them.\n\nThe plan was a central unit that connects to every device in the house, whatever the brand, and learns the household’s routine. It would detect a fall and alert family, call for help in an emergency, and take over daily chores like cooking and cleaning as more devices were added.\n\nWe spoke to 50+ households before building much. Modul is where I learned to talk to users before writing code.",
+      },
+      {
+        title: "Testing the Assumptions",
+        summary: "40 surveys, household interviews, and four hypotheses with pass marks.",
+        readTime: "2 min",
+        body: "I led customer discovery. We surveyed 40 people across three groups: working singles, working parents and senior citizens. Then we did longer household interviews.\n\nWe wrote down four hypotheses with a pass mark for each before we started. For example, at least 60% had to want multi-brand integration, and at least 50% had to prefer a modular model over a one-time purchase.\n\nWhat we heard:\nCooking, cleaning and laundry were what people most wanted automated.\nMost homes had devices from several brands, and brand loyalty was low. Price, reviews and friends decided what they bought.\nOlder and lower-income respondents either had not heard of home automation or thought it was too expensive.\nHouseholds were uneasy about a device that watched their routines.\nLower-income households preferred the modular model. Wealthier ones wanted a complete system upfront.",
+      },
+      {
+        title: "Two Pivots",
+        summary: "A new target customer, and selling through contractors and showrooms.",
+        readTime: "2 min",
+        body: "The first was the customer. Young professionals were excited, and senior citizens were reluctant to change how they lived. The people I most wanted to help were the least willing to use it. We moved our target to working professionals aged 20 to 50, some of whom would buy it for their parents.\n\nThe second was the business model. After speaking to industry experts, we realised selling through contractors, interior designers and electronics showrooms could work better than selling to households one at a time. We planned two offers: device add-ons for middle-income homes, and full end-to-end integration for affluent ones.",
+      },
+    ],
+  },
 ];

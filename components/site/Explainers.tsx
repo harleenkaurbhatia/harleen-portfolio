@@ -338,8 +338,80 @@ function Sahayak() {
   );
 }
 
+/* ---------- Modul ---------- */
+
+const DEVICES: [string, string][] = [
+  ["Lights", "ZIGBEE"],
+  ["Door lock", "Z-WAVE"],
+  ["Motion sensor", "BLUETOOTH"],
+  ["Geyser", "WI-FI"],
+];
+
+function Modul() {
+  return (
+    <Frame label="Devices from any brand connect to the Modul hub, which learns the routine and alerts family after a fall">
+      {DEVICES.map(([name, proto], i) => {
+        const y = 46 + i * 70;
+        return (
+          <g key={name}>
+            <path
+              d={`M168 ${y + 24} C 190 ${y + 24}, 190 178, 214 178`}
+              fill="none"
+              stroke={BLUE}
+              strokeWidth="1.6"
+              pathLength={1}
+              className="ex-draw"
+            />
+            <rect x="28" y={y} width="140" height="48" rx="10" fill={PAPER} stroke={LINE} />
+            <text x="42" y={y + 21} className="ex-h2" fill={INK}>{name}</text>
+            <text x="42" y={y + 38} className="ex-mono" fill={BLUE}>{proto}</text>
+          </g>
+        );
+      })}
+
+      <g transform="translate(214 128)">
+        <rect width="100" height="100" rx="12" fill={INK} />
+        <rect x="14" y="14" width="72" height="44" rx="6" fill="#1d1d21" />
+        <ellipse cx="38" cy="32" rx="5" ry="7" fill="#fff" />
+        <ellipse cx="62" cy="32" rx="5" ry="7" fill="#fff" />
+        <path d="M42 46 q8 6 16 0" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
+        <text x="50" y="84" textAnchor="middle" className="ex-mono" fill="#fff">modul</text>
+      </g>
+      <text x="264" y="256" textAnchor="middle" className="ex-mono" fill={MUTED}>HUB · ZIGBEE MESH</text>
+
+      <g transform="translate(354 34)">
+        <rect width="258" height="292" rx="14" fill={PAPER} stroke={LINE} />
+        <text x="18" y="30" className="ex-mono" fill={MUTED}>HOME · TODAY</text>
+        {[
+          ["07:40", "Kitchen lights on", "ex-in-10"],
+          ["08:10", "Geyser switched off", "ex-in-25"],
+          ["22:30", "Door locked", "ex-in-35"],
+        ].map(([t, what, cls], i) => (
+          <g key={t} transform={`translate(0 ${50 + i * 46})`}>
+            <g className={cls}>
+              <text x="18" y="18" className="ex-mono" fill={MUTED}>{t}</text>
+              <text x="70" y="18" className="ex-b" fill={INK}>{what}</text>
+              <text x="70" y="34" className="ex-mono" fill={MUTED}>LEARNED ROUTINE</text>
+            </g>
+          </g>
+        ))}
+        <g className="ex-in-50">
+          <rect x="10" y="196" width="238" height="82" rx="10" fill={BLUE_SOFT} stroke={BLUE} />
+          <text x="24" y="222" className="ex-mono" fill={BLUE}>02:14 · BEDROOM</text>
+          <text x="24" y="244" className="ex-h2" fill={INK}>Fall detected</text>
+          <text x="24" y="264" className="ex-b" fill={INK}>Alerting family</text>
+          {[0, 1, 2].map((i) => (
+            <circle key={i} cx={134 + i * 10} cy="260" r="3" fill={BLUE} className="ex-dot" style={{ animationDelay: `${i * 0.15}s` }} />
+          ))}
+        </g>
+      </g>
+    </Frame>
+  );
+}
+
 export const explainers: Record<string, () => React.ReactElement> = {
   sahayak: Sahayak,
+  modul: Modul,
   "mumbai-flood-warning-system": Flood,
   "dynamic-ad-placement": AdPlacement,
   "sector-forecasting": Forecast,

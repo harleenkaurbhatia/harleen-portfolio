@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
     return [
       ...projects.map((p) => ({ source: `/show/${p.slug}`, destination: `/work/${p.slug}`, permanent: true })),
       ...experience.map((e) => ({ source: `/show/${e.slug}`, destination: `/experience/${e.slug}`, permanent: true })),
+      { source: "/experience/modul-cofounder", destination: "/work/modul", permanent: true },
+      { source: "/show/modul-cofounder", destination: "/work/modul", permanent: true },
       { source: "/show/:slug", destination: "/about", permanent: true },
       { source: "/projects", destination: "/work", permanent: true },
       { source: "/education", destination: "/about", permanent: true },
